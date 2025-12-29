@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "PM Kisan Samman Nidhi",
+    "description": "Income support of Rs.6,000 per year to small and marginal farmer families.",
+    "eligibility": "Small and marginal farmer families with landholding less than 2 hectares.",
+    "benefits": "Quarterly direct cash transfer of Rs.2000 to farmer's bank account."
+  },
+  {
+    "id": 2,
+    "name": "Pradhan Mantri Fasal Bima Yojana (PMFBY)",
+    "description": "Crop insurance scheme to protect farmers against crop failure.",
+    "eligibility": "All farmers growing notified crops and enrolled in the scheme.",
+    "benefits": "Compensation for crop losses due to natural calamities, pests, and diseases."
+  },
+  {
+    "id": 3,
+    "name": "Soil Health Card Scheme",
+    "description": "Provides soil testing and nutrient recommendations to farmers.",
+    "eligibility": "All farmers can apply for soil testing.",
+    "benefits": "Better crop yields through recommended fertilizers and amendments."
+  }
+]

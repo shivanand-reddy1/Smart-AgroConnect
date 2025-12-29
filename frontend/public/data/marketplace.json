@@ -1,0 +1,33 @@
+{
+  "buyerListings": [
+    {
+      "id": 1,
+      "title": "Buying 100 quintals of Red Rice",
+      "buyer": "Aman Traders",
+      "pricePerUnit": 2200,
+      "quantity": 100,
+      "unit": "quintal",
+      "location": "Bangalore"
+    }
+  ],
+  "farmerProducts": [
+    {
+      "id": 101,
+      "title": "Fresh Green Gram",
+      "farmer": "Raju Farms",
+      "pricePerUnit": 4500,
+      "quantity": 10,
+      "unit": "quintal",
+      "location": "Mysore"
+    },
+    {
+      "id": 102,
+      "title": "Organic Turmeric",
+      "farmer": "SowGrow",
+      "pricePerUnit": 12000,
+      "quantity": 2,
+      "unit": "quintal",
+      "location": "Hassan"
+    }
+  ]
+}
