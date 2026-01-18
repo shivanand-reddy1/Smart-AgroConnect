@@ -76,7 +76,7 @@ const getSchemeDeadlines = async (req, res) => {
     if (state) query.state = state;
 
     const schemes = await GovernmentScheme.find(query).select(
-      "name applicationDeadline category"
+      "name applicationDeadline category state applicationLink description benefits"
     );
 
     const deadlines = schemes.map((scheme) => ({
@@ -87,6 +87,20 @@ const getSchemeDeadlines = async (req, res) => {
         (scheme.applicationDeadline - new Date()) / (1000 * 60 * 60 * 24)
       ),
       category: scheme.category,
+      state: scheme.state,
+      applicationLink: scheme.applicationLink,
+      description: scheme.description,
+      benefits: scheme.benefits,
+      urgency:
+        Math.ceil(
+          (scheme.applicationDeadline - new Date()) / (1000 * 60 * 60 * 24)
+        ) <= 7
+          ? "urgent"
+          : Math.ceil(
+              (scheme.applicationDeadline - new Date()) / (1000 * 60 * 60 * 24)
+            ) <= 30
+          ? "moderate"
+          : "normal",
     }));
 
     res.json(deadlines.sort((a, b) => a.daysLeft - b.daysLeft));

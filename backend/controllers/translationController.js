@@ -627,6 +627,120 @@ const translations = {
   Machines: "ಯಂತ್ರಗಳು",
   Irrigation: "ನೀರಾವರಿ",
   "Organic Products": "ಸಾವಯವ ಉತ್ಪನ್ನಗಳು",
+
+  // New Knowledge Hub Content Translations (Added January 2026)
+  "Sustainable Rice Farming: Zero Tillage Method":
+    "ಸುಸ್ಥಿರ ಅಕ್ಕಿ ಕೃಷಿ: ಜಿರೋ ಟಿಲೇಜ್ ವಿಧಾನ",
+  "Crop Cultivation": "ಬೆಳೆ ಕೃಷಿ",
+  "Soil degradation": "ಮಣ್ಣಿನ ಅವನತಿ",
+  "Learn how zero tillage reduces costs by 15-20%, improves soil health, and increases water retention for sustainable paddy cultivation.":
+    "ಜಿರೋ ಟಿಲೇಜ್ ವೆಚ್ಚವನ್ನು 15-20% ಕಡಿಮೆ ಮಾಡುತ್ತದೆ, ಮಣ್ಣಿನ ಆರೋಗ್ಯವನ್ನು ಸುಧಾರಿಸುತ್ತದೆ ಮತ್ತು ಸುಸ್ಥಿರ ಭತ್ತದ ಕೃಷಿಗಾಗಿ ನೀರಿನ ಧಾರಣವನ್ನು ಹೆಚ್ಚಿಸುತ್ತದೆ ಎಂದು ತಿಳಿಯಿರಿ.",
+  "Wheat Crop Management: Seed to Harvest":
+    "ಗೋಧಿ ಬೆಳೆ ನಿರ್ವಹಣೆ: ಬೀಜದಿಂದ ಸುಗ್ರೀವ",
+  "Yield optimization": "ಇಳುವರಿ ಅತ್ಯುತ್ತಮೀಕರಣ",
+  "Complete guide covering seed selection, land preparation, sowing techniques, irrigation schedule, fertilizer application, and harvesting best practices.":
+    "ಬೀಜ ಆಯ್ಕೆ, ಭೂಮಿ ಸಿದ್ಧತೆ, ಬಿತ್ತನೆ ತಂತ್ರಗಳು, ನೀರಾವರಿ ವೇಳಾಪಟ್ಟಿ, ರಸಗೊಬ್ಬರ ಅನ್ವಯ ಮತ್ತು ಕೊಯ್ಲಿನ ಉತ್ತಮ ಅಭ್ಯಾಸಗಳನ್ನು ಒಳಗೊಂಡ ಸಂಪೂರ್ಣ ಮಾರ್ಗದರ್ಶಿ.",
+  "Disease Identification in Potato Crops":
+    "ಆಲೂಗಡ್ಡೆ ಬೆಳೆಗಳಲ್ಲಿ ರೋಗ ಗುರುತಿಸುವಿಕೆ",
+  "Late blight": "ತಡ ಬ್ಲೈಟ್",
+  "Identify late blight early signs: water-soaked lesions on leaves. Apply copper fungicide preventively; ensure proper spacing for air circulation.":
+    "ತಡವಾದ ಬ್ಲೈಟ್ ಆರಂಭಿಕ ಚಿಹ್ನೆಗಳನ್ನು ಗುರುತಿಸಿ: ಎಲೆಗಳ ಮೇಲೆ ನೀರು-ನೆನೆದ ಗಾಯಗಳು. ತಾಮ್ರದ ಶಿಲೀಂಧ್ರನಾಶಕವನ್ನು ತಡೆಗಟ್ಟುವಂತೆ ಅನ್ವಯಿಸಿ; ಗಾಳಿ ಪರಿಚಲನೆಗಾಗಿ ಸರಿಯಾದ ಅಂತರವನ್ನು ಖಚಿತಪಡಿಸಿಕೊಳ್ಳಿ.",
+  "Precision Agriculture: IoT Sensors for Farms":
+    "ನಿಖರತೆಯ ಕೃಷಿ: ತೋಟಗಳಿಗೆ IoT ಸಂವೇದಕಗಳು",
+  Technology: "ತಂತ್ರಜ್ಞಾನ",
+  "Farm monitoring": "ತೋಟ ಮೇಲ್ವಿಚಾರಣೆ",
+  "Explore how soil moisture sensors, weather stations, and crop cameras help optimize irrigation, predict diseases, and improve yields by 20-30%.":
+    "ಮಣ್ಣಿನ ತೇವಾಂಶ ಸಂವೇದಕಗಳು, ಹವಾಮಾನ ಕೇಂದ್ರಗಳು ಮತ್ತು ಬೆಳೆ ಕ್ಯಾಮೆರಾಗಳು ನೀರಾವರಿಯನ್ನು ಅತ್ಯುತ್ತಮಗೊಳಿಸಲು, ರೋಗಗಳನ್ನು ಊಹಿಸಲು ಮತ್ತು ಇಳುವರಿಯನ್ನು 20-30% ಸುಧಾರಿಸಲು ಹೇಗೆ ಸಹಾಯ ಮಾಡುತ್ತದೆ ಎಂಬುದನ್ನು ಅನ್ವೇಷಿಸಿ.",
+  "Organic Farming": "ಸಾವಯವ ಕೃಷಿ",
+  "Organic Farming: Natural Pest Control Methods":
+    "ಸಾವಯವ ಕೃಷಿ: ನೈಸರ್ಗಿಕ ಕೀಟ ನಿಯಂತ್ರಣ ವಿಧಾನಗಳು",
+  "Chemical-free pest control": "ರಾಸಾಯನಿಕ ಮುಕ್ತ ಕೀಟ ನಿಯಂತ್ರಣ",
+  "Use neem oil spray (5ml/liter), pheromone traps, and companion planting (marigold with tomato). Introduce beneficial insects like ladybugs and parasitic wasps.":
+    "ಬೇವಿನ ಎಣ್ಣೆ ಸ್ಪ್ರೇ (5ಮಿ.ಲಿ/ಲೀಟರ್), ಫೆರೋಮೋನ್ ಟ್ರ್ಯಾಪ್‌ಗಳು ಮತ್ತು ಸಹಚರ ನೆಡುವಿಕೆ (ಟೊಮ್ಯಾಟೊದೊಂದಿಗೆ ಮ್ಯಾರಿಗೋಲ್ಡ್) ಬಳಸಿ. ಲೇಡಿಬಗ್‌ಗಳು ಮತ್ತು ಪರಾವಲಂಬಿ ಕಣಜಗಳಂತಹ ಉಪಯುಕ್ತ ಕೀಟಗಳನ್ನು ಪರಿಚಯಿಸಿ.",
+  "Composting Guide: From Waste to Nutrient-Rich Fertilizer":
+    "ಕಂಪೋಸ್ಟಿಂಗ್ ಮಾರ್ಗದರ್ಶಿ: ತ್ಯಾಜ್ಯದಿಂದ ಪೋಷಕಾಂಶ-ಸಮೃದ್ಧ ಗೊಬ್ಬರಕ್ಕೆ",
+  "Organic matter": "ಸಾವಯವ ವಸ್ತು",
+  "Layer green waste (50%) with brown matter (50%); maintain moisture at 60%; turn weekly. Ready in 45-60 days with earthy smell and dark color.":
+    "ಹಸಿರು ತ್ಯಾಜ್ಯವನ್ನು (50%) ಕಂದು ವಸ್ತುವಿನೊಂದಿಗೆ (50%) ಪದರ ಮಾಡಿ; ತೇವಾಂಶವನ್ನು 60% ನಲ್ಲಿ ನಿರ್ವಹಿಸಿ; ವಾರದ ಪ್ರಕಾರ ತಿರುಗಿಸಿ. ಮಣ್ಣಿನ ವಾಸನೆ ಮತ್ತು ಗಾಢ ಬಣ್ಣದೊಂದಿಗೆ 45-60 ದಿನಗಳಲ್ಲಿ ಸಿದ್ಧ.",
+  "Vermicomposting: Black Gold for Your Fields":
+    "ವರ್ಮಿಕಂಪೋಸ್ಟಿಂಗ್: ನಿಮ್ಮ ಹೊಲಗಳಿಗೆ ಕಪ್ಪು ಚಿನ್ನ",
+  "Soil enrichment": "ಮಣ್ಣಿನ ಪುಷ್ಟೀಕರಣ",
+  "Use Eisenia fetida earthworms; feed kitchen waste and farm residue. Harvest vermicompost in 60 days; rich in NPK and beneficial microbes.":
+    "ಐಸೇನಿಯಾ ಫೆಟಿಡಾ ಎರೆಹುಳುಗಳನ್ನು ಬಳಸಿ; ಅಡಿಗೆ ತ್ಯಾಜ್ಯ ಮತ್ತು ತೋಟದ ಅವಶೇಷವನ್ನು ತಿನ್ನಿಸಿ. 60 ದಿನಗಳಲ್ಲಿ ವರ್ಮಿಕಂಪೋಸ್ಟ್ ಕೊಯ್ಲು; NPK ಮತ್ತು ಉಪಯುಕ್ತ ಸೂಕ್ಷ್ಮಜೀವಿಗಳಲ್ಲಿ ಸಮೃದ್ಧ.",
+  "Bio-Fertilizers: Boosting Soil Microbiology Naturally":
+    "ಜೈವಿಕ-ಗೊಬ್ಬರಗಳು: ಮಣ್ಣಿನ ಸೂಕ್ಷ್ಮ ಜೀವವಿಜ್ಞಾನವನ್ನು ನೈಸರ್ಗಿಕವಾಗಿ ಹೆಚ್ಚಿಸುವುದು",
+  "Chemical fertilizer reduction": "ರಾಸಾಯನಿಕ ಗೊಬ್ಬರ ಕಡಿತ",
+  "Rhizobium for legumes, Azotobacter for cereals, PSB for phosphorus mobilization. Apply 250g/acre mixed with compost at sowing.":
+    "ದ್ವಿದಳ ಧಾನ್ಯಗಳಿಗೆ ರೈಜೋಬಿಯಂ, ಧಾನ್ಯಗಳಿಗೆ ಅಜೋಟೋಬ್ಯಾಕ್ಟರ್, ರಂಜಕದ ಸಜ್ಜುಗೊಳಿಸುವಿಕೆಗೆ PSB. ಬಿತ್ತನೆಯಲ್ಲಿ ಕಂಪೋಸ್ಟ್‌ನೊಂದಿಗೆ ಮಿಶ್ರಿತ 250ಗ್ರಾಂ/ಎಕರೆ ಅನ್ವಯಿಸಿ.",
+  "Green Manuring: Dhaincha and Sesbania Benefits":
+    "ಹಸಿರು ಗೊಬ್ಬರ: ಧಯಿಂಚಾ ಮತ್ತು ಸೆಸ್ಬೇನಿಯಾ ಪ್ರಯೋಜನಗಳು",
+  "Nitrogen deficiency": "ಸಾರಜನಕ ಕೊರತೆ",
+  "Sow dhaincha 45 days before transplanting; plow in at flowering. Adds 60-80kg N/ha naturally; improves soil structure and water retention.":
+    "ನಾಟಿ ಮಾಡುವ 45 ದಿನಗಳ ಮೊದಲು ಧಯಿಂಚಾ ಬಿತ್ತಿ; ಹೂಬಿಡುವ ಸಮಯದಲ್ಲಿ ಉಳುಮೆ ಮಾಡಿ. ನೈಸರ್ಗಿಕವಾಗಿ 60-80ಕೆಜಿ N/ಹೆಕ್ಟೇರ್ ಸೇರಿಸುತ್ತದೆ; ಮಣ್ಣಿನ ರಚನೆ ಮತ್ತು ನೀರಿನ ಧಾರಣವನ್ನು ಸುಧಾರಿಸುತ್ತದೆ.",
+  "Pesticide Guidelines": "ಕೀಟನಾಶಕ ಮಾರ್ಗಸೂಚಿಗಳು",
+  "Safe Pesticide Application: Dos and Don'ts":
+    "ಸುರಕ್ಷಿತ ಕೀಟನಾಶಕ ಅನ್ವಯ: ಮಾಡಬೇಕಾದ ಮತ್ತು ಮಾಡಬಾರದ",
+  "Pesticide safety": "ಕೀಟನಾಶಕ ಸುರಕ್ಷತೆ",
+  Safety: "ಸುರಕ್ಷತೆ",
+  "Always wear PPE (mask, gloves, boots); spray early morning or evening; follow label dosage; maintain 3-day PHI for vegetables, 7-day for fruits.":
+    "ಯಾವಾಗಲೂ PPE (ಮುಖವಾಡ, ಕೈಗವಸುಗಳು, ಬೂಟುಗಳು) ಧರಿಸಿ; ಮುಂಜಾನೆ ಅಥವಾ ಸಂಜೆ ಸಿಂಪಡಿಸಿ; ಲೇಬಲ್ ಪ್ರಮಾಣವನ್ನು ಅನುಸರಿಸಿ; ತರಕಾರಿಗಳಿಗೆ 3-ದಿನದ PHI, ಹಣ್ಣುಗಳಿಗೆ 7-ದಿನ ನಿರ್ವಹಿಸಿ.",
+  "Pesticide Resistance Management Strategies":
+    "ಕೀಟನಾಶಕ ಪ್ರತಿರೋಧ ನಿರ್ವಹಣೆ ತಂತ್ರಗಳು",
+  "Resistance development": "ಪ್ರತಿರೋಧ ಅಭಿವೃದ್ಧಿ",
+  "Rotate pesticide groups (MoA); avoid consecutive applications of same chemical. Integrate bio-pesticides; use threshold-based spraying.":
+    "ಕೀಟನಾಶಕ ಗುಂಪುಗಳನ್ನು (MoA) ತಿರುಗಿಸಿ; ಅದೇ ರಾಸಾಯನಿಕದ ಸತತ ಅನ್ವಯಗಳನ್ನು ತಪ್ಪಿಸಿ. ಜೈವಿಕ-ಕೀಟನಾಶಕಗಳನ್ನು ಸಂಯೋಜಿಸಿ; ಮಿತಿ-ಆಧಾರಿತ ಸಿಂಪಡಣೆಯನ್ನು ಬಳಸಿ.",
+  "Pre-Harvest Interval (PHI): Why It Matters":
+    "ಪೂರ್ವ-ಕೊಯ್ಲು ಮಧ್ಯಂತರ (PHI): ಇದು ಏಕೆ ಮುಖ್ಯ",
+  "Residue safety": "ಅವಶೇಷ ಸುರಕ್ಷತೆ",
+  "PHI is the minimum days between last spray and harvest. Violating PHI leads to toxic residues. Check product label; typically 3-15 days.":
+    "PHI ಎಂದರೆ ಕೊನೆಯ ಸಿಂಪಡಣೆ ಮತ್ತು ಕೊಯ್ಲಿನ ನಡುವಿನ ಕನಿಷ್ಠ ದಿನಗಳು. PHI ಉಲ್ಲಂಘಿಸುವುದು ವಿಷಕಾರಿ ಅವಶೇಷಗಳಿಗೆ ಕಾರಣವಾಗುತ್ತದೆ. ಉತ್ಪನ್ನ ಲೇಬಲ್ ಪರಿಶೀಲಿಸಿ; ಸಾಮಾನ್ಯವಾಗಿ 3-15 ದಿನಗಳು.",
+  "Calibration of Sprayers: Get the Dose Right":
+    "ಸ್ಪ್ರೇಯರ್‌ಗಳ ಮಾಪನಾಂಕನ: ಪ್ರಮಾಣವನ್ನು ಸರಿಯಾಗಿ ಪಡೆಯಿರಿ",
+  "Spray accuracy": "ಸ್ಪ್ರೇ ನಿಖರತೆ",
+  "Calibrate sprayer by measuring water output per acre. Adjust nozzle pressure; test spray pattern. Under-dosing = poor control; over-dosing = wastage + toxicity.":
+    "ಪ್ರತಿ ಎಕರೆಗೆ ನೀರಿನ ಉತ್ಪಾದನೆಯನ್ನು ಅಳೆಯುವ ಮೂಲಕ ಸ್ಪ್ರೇಯರ್ ಅನ್ನು ಮಾಪನಾಂಕನ ಮಾಡಿ. ನಳಿಕೆ ಒತ್ತಡವನ್ನು ಸರಿಹೊಂದಿಸಿ; ಸ್ಪ್ರೇ ಮಾದರಿಯನ್ನು ಪರೀಕ್ಷಿಸಿ. ಕಡಿಮೆ ಪ್ರಮಾಣ = ಕಳಪೆ ನಿಯಂತ್ರಣ; ಅತಿ ಪ್ರಮಾಣ = ವ್ಯರ್ಥ + ವಿಷತ್ವ.",
+  "Disposal of Empty Pesticide Containers Safely":
+    "ಖಾಲಿ ಕೀಟನಾಶಕ ಪಾತ್ರೆಗಳನ್ನು ಸುರಕ್ಷಿತವಾಗಿ ವಿಲೇವಾರಿ",
+  "Environmental safety": "ಪರಿಸರ ಸುರಕ್ಷತೆ",
+  "Video: Drip Irrigation System - How It Works":
+    "ವೀಡಿಯೊ: ಟಿಪ್ಪಣಿ ನೀರಾವರಿ ವ್ಯವಸ್ಥೆ - ಇದು ಹೇಗೆ ಕೆಲಸ ಮಾಡುತ್ತದೆ",
+  "Complete guide to drip irrigation system with layout animation showing how it works for efficient water management.":
+    "ಸಮರ್ಥ ನೀರು ನಿರ್ವಹಣೆಗಾಗಿ ಇದು ಹೇಗೆ ಕೆಲಸ ಮಾಡುತ್ತದೆ ಎಂದು ತೋರಿಸುವ ವಿನ್ಯಾಸ ಅನಿಮೇಶನ್‌ನೊಂದಿಗೆ ಟಿಪ್ಪಣಿ ನೀರಾವರಿ ವ್ಯವಸ್ಥೆಗೆ ಸಂಪೂರ್ಣ ಮಾರ್ಗದರ್ಶಿ.",
+  "Video: Best Drip Irrigation System for Gardens & Farms":
+    "ವೀಡಿಯೊ: ತೋಟಗಳು ಮತ್ತು ತೋಟಗಳಿಗೆ ಉತ್ತಮ ಟಿಪ್ಪಣಿ ನೀರಾವರಿ ವ್ಯವಸ್ಥೆ",
+  "Irrigation methods": "ನೀರಾವರಿ ವಿಧಾನಗಳು",
+  "Learn about the best drip irrigation systems suitable for gardens and agriculture farms.":
+    "ತೋಟಗಳು ಮತ್ತು ಕೃಷಿ ತೋಟಗಳಿಗೆ ಸೂಕ್ತವಾದ ಉತ್ತಮ ಟಿಪ್ಪಣಿ ನೀರಾವರಿ ವ್ಯವಸ್ಥೆಗಳ ಬಗ್ಗೆ ತಿಳಿಯಿರಿ.",
+  "Video: Importance of Organic Farming - Sustainable Agriculture":
+    "ವೀಡಿಯೊ: ಸಾವಯವ ಕೃಷಿಯ ಪ್ರಾಮುಖ್ಯತೆ - ಸುಸ್ಥಿರ ಕೃಷಿ",
+  Sustainability: "ಸುಸ್ಥಿರತೆ",
+  "Understand what organic farming is and why it's important for sustainable agriculture.":
+    "ಸಾವಯವ ಕೃಷಿ ಎಂದರೇನು ಮತ್ತು ಸುಸ್ಥಿರ ಕೃಷಿಗೆ ಇದು ಏಕೆ ಮುಖ್ಯ ಎಂಬುದನ್ನು ಅರ್ಥಮಾಡಿಕೊಳ್ಳಿ.",
+  "Video: 30 Essential Organic Farming Techniques":
+    "ವೀಡಿಯೊ: 30 ಅತ್ಯಗತ್ಯ ಸಾವಯವ ಕೃಷಿ ತಂತ್ರಗಳು",
+  "Organic methods": "ಸಾವಯವ ವಿಧಾನಗಳು",
+  "30 essential organic farming techniques for small farms and market gardens.":
+    "ಸಣ್ಣ ತೋಟಗಳು ಮತ್ತು ಮಾರುಕಟ್ಟೆ ತೋಟಗಳಿಗಾಗಿ 30 ಅತ್ಯಗತ್ಯ ಸಾವಯವ ಕೃಷಿ ತಂತ್ರಗಳು.",
+  "Video: How to Start Organic Farming Business":
+    "ವೀಡಿಯೊ: ಸಾವಯವ ಕೃಷಿ ವ್ಯಾಪಾರವನ್ನು ಹೇಗೆ ಪ್ರಾರಂಭಿಸುವುದು",
+  "Business setup": "ವ್ಯಾಪಾರ ಸೆಟಪ್",
+  "Step-by-step guide on how to start organic farming business and organic production process.":
+    "ಸಾವಯವ ಕೃಷಿ ವ್ಯಾಪಾರ ಮತ್ತು ಸಾವಯವ ಉತ್ಪಾದನೆ ಪ್ರಕ್ರಿಯೆಯನ್ನು ಹೇಗೆ ಪ್ರಾರಂಭಿಸುವುದು ಎಂಬುದರ ಬಗ್ಗೆ ಹಂತ-ಹಂತದ ಮಾರ್ಗದರ್ಶಿ.",
+  "Cotton Cultivation: Complete Season Guide":
+    "ಹತ್ತಿ ಕೃಷಿ: ಸಂಪೂರ್ಣ ಋತು ಮಾರ್ಗದರ್ಶಿ",
+  "Land preparation, Bt vs non-Bt varieties, spacing, drip setup, pest monitoring calendar, picking stages, and post-harvest handling.":
+    "ಭೂಮಿ ಸಿದ್ಧತೆ, Bt ವಿರುದ್ಧ ಬೇರೆ-Bt ಪ್ರಭೇದಗಳು, ಅಂತರ, ಟಿಪ್ಪಣಿ ಸೆಟಪ್, ಕೀಟ ಮೇಲ್ವಿಚಾರಣೆ ಕ್ಯಾಲೆಂಡರ್, ಆರಿಸುವ ಹಂತಗಳು ಮತ್ತು ಕೊಯ್ಲು ನಂತರದ ನಿರ್ವಹಣೆ.",
+  "Vegetable Farming: Tomato Production Guide":
+    "ತರಕಾರಿ ಕೃಷಿ: ಟೊಮ್ಯಾಟೊ ಉತ್ಪಾದನೆ ಮಾರ್ಗದರ್ಶಿ",
+  "Nursery raising, transplanting, staking, drip irrigation, fertigation schedule, disease management, and grading for market.":
+    "ತೋಟ ಸಾಕಣೆ, ನಾಟಿ, ಕಂಬಗಳು, ಟಿಪ್ಪಣಿ ನೀರಾವರಿ, ಫರ್ಟಿಗೇಶನ್ ವೇಳಾಪಟ್ಟಿ, ರೋಗ ನಿರ್ವಹಣೆ ಮತ್ತು ಮಾರುಕಟ್ಟೆಗೆ ಶ್ರೇಣೀಕರಣ.",
+  "Organic pest control": "ಸಾವಯವ ಕೀಟ ನಿಯಂತ್ರಣ",
+  "Pesticide safety guidelines": "ಕೀಟನಾಶಕ ಸುರಕ್ಷತೆ ಮಾರ್ಗಸೂಚಿಗಳು",
+  "Vermicomposting techniques": "ವರ್ಮಿಕಂಪೋಸ್ಟಿಂಗ್ ತಂತ್ರಗಳು",
+  "Watch this video on YouTube": "ಈ ವೀಡಿಯೊವನ್ನು YouTube ನಲ್ಲಿ ವೀಕ್ಷಿಸಿ",
+  "Open in YouTube": "YouTube ನಲ್ಲಿ ತೆರೆಯಿರಿ",
+  "Some videos cannot be embedded. Click above to watch on YouTube.":
+    "ಕೆಲವು ವೀಡಿಯೊಗಳನ್ನು ಎಂಬೆಡ್ ಮಾಡಲಾಗುವುದಿಲ್ಲ. YouTube ನಲ್ಲಿ ವೀಕ್ಷಿಸಲು ಮೇಲೆ ಕ್ಲಿಕ್ ಮಾಡಿ.",
 };
 
 // Get translation

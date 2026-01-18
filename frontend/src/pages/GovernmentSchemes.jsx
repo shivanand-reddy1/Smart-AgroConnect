@@ -15,6 +15,7 @@ const schemeData = [
     benefitAmount: "₹6,000/year",
     benefitType: "Cash transfer",
     deadline: "Ongoing",
+    applicationLink: "https://pmkisan.gov.in/",
     tags: ["Income", "Direct benefit", "Small farmers"],
     eligibility:
       "Small and marginal farmer families with cultivable land; exclusions apply for institutional/government service holders.",
@@ -50,6 +51,7 @@ const schemeData = [
     benefitAmount: "Sum insured per crop as notified",
     benefitType: "Insurance",
     deadline: "Before sowing / as notified",
+    applicationLink: "https://pmfby.gov.in/",
     tags: ["Insurance", "Risk cover", "Climate"],
     eligibility:
       "All farmers growing notified crops in notified areas; enrol before cutoff; loanee farmers auto-enrolled unless they opt out.",
@@ -85,6 +87,7 @@ const schemeData = [
     benefitAmount: "Free/low-cost testing",
     benefitType: "Service",
     deadline: "Ongoing",
+    applicationLink: "https://soilhealth.dac.gov.in/",
     tags: ["Soil", "Testing", "Advisory"],
     eligibility: "All farmers; periodic testing recommended every 2 years.",
     documents: ["ID proof", "Land record"],
@@ -116,6 +119,7 @@ const schemeData = [
     benefitAmount: "Up to 55% (general), 60% (SC/ST)",
     benefitType: "Subsidy",
     deadline: "31 Mar 2026",
+    applicationLink: "https://raitamitra.karnataka.gov.in/",
     tags: ["Irrigation", "Water saving", "State"],
     eligibility:
       "Eligible farmers with drip/sprinkler layouts as per department norms; priority for small/marginal and water-stressed blocks.",
@@ -154,6 +158,8 @@ const schemeData = [
     benefitAmount: "Up to ₹3L; 2-3% interest subvention",
     benefitType: "Loan",
     deadline: "Ongoing",
+    applicationLink:
+      "https://www.nabard.org/content1.aspx?id=523&catid=8&mid=530",
     tags: ["Credit", "Working capital", "Livestock"],
     eligibility:
       "All farmers including dairy, fisheries; clean repayment history; land records or activity proof required.",
@@ -185,6 +191,7 @@ const schemeData = [
     benefitAmount: "3% interest subvention up to ₹2 cr; CGTMSE guarantee",
     benefitType: "Loan support",
     deadline: "31 Mar 2032",
+    applicationLink: "https://agriinfra.dac.gov.in/",
     tags: ["Storage", "Processing", "Value chain"],
     eligibility:
       "Eligible for post-harvest infra (warehouses, cold chain, primary processing) by farmers, FPOs, agri-startups.",
@@ -217,6 +224,7 @@ const schemeData = [
     benefitAmount: "Credit-linked subsidy up to 35% (₹10L cap for individuals)",
     benefitType: "Subsidy",
     deadline: "Ongoing",
+    applicationLink: "https://pmfme.mofpi.gov.in/pmfme/",
     tags: ["Processing", "Value addition", "Micro enterprise"],
     eligibility:
       "Existing or new micro food processing units; priority for SHGs, SC/ST, women entrepreneurs.",
@@ -237,38 +245,6 @@ const schemeData = [
     status: "Open",
   },
   {
-    id: "livestock",
-    name: "National Livestock Mission Support",
-    category: "Central",
-    type: "Livestock",
-    state: "Pan India",
-    crops: ["Dairy", "Goatery", "Poultry"],
-    farmerCategory: ["All"],
-    subsidyType: "Capex subsidy",
-    incomeType: "All",
-    benefitAmount: "25-35% back-ended subsidy (higher for SC/ST/women)",
-    benefitType: "Subsidy",
-    deadline: "Ongoing",
-    tags: ["Livestock", "Dairy", "Poultry"],
-    eligibility:
-      "Projects for breed improvement, feed/fodder units, small ruminant/poultry sheds as per guidelines.",
-    documents: ["KYC", "Project report", "Land/lease", "Bank sanction"],
-    steps: [
-      "Choose component (breeding, feed, sheds)",
-      "Apply through bank with DPR and land/lease documents",
-      "Department approval and subsidy reservation",
-      "Implement project and claim subsidy after verification",
-    ],
-    contacts: {
-      phone: "DAHD helpline",
-      email: "",
-      office: "District Animal Husbandry Office",
-    },
-    faq: ["Higher subsidy slabs apply for SC/ST and NE states."],
-    lastUpdated: "6d ago",
-    status: "Open",
-  },
-  {
     id: "fpo",
     name: "Formation & Promotion of 10,000 FPOs",
     category: "Central",
@@ -281,6 +257,7 @@ const schemeData = [
     benefitAmount: "Equity grant up to ₹15L; credit guarantee up to ₹2 cr",
     benefitType: "Equity support",
     deadline: "Ongoing",
+    applicationLink: "https://www.sfacindia.com/",
     tags: ["FPO", "Collective", "Market linkage"],
     eligibility:
       "New/existing FPOs promoted through CBBOs; minimum farmer member norms as per guidelines.",
@@ -298,38 +275,6 @@ const schemeData = [
     },
     faq: ["Credit guarantee available via CGTMSE window for FPOs."],
     lastUpdated: "9d ago",
-    status: "Open",
-  },
-  {
-    id: "millet",
-    name: "Odisha Millet Mission",
-    category: "State",
-    type: "Millet Promotion",
-    state: "Odisha",
-    crops: ["Millets"],
-    farmerCategory: ["Small", "Marginal", "Tribal"],
-    subsidyType: "Production & procurement support",
-    incomeType: "All",
-    benefitAmount: "Input support ₹7k-10k/ha; assured procurement",
-    benefitType: "Subsidy/Procurement",
-    deadline: "Ongoing",
-    tags: ["Millets", "Climate resilient", "Nutrition"],
-    eligibility:
-      "Millet farmers in notified blocks; priority to tribal and rainfed areas.",
-    documents: ["Aadhaar", "Land record", "Bank details"],
-    steps: [
-      "Enroll through VAW/Block agriculture office",
-      "Attend training and receive seed/input kit",
-      "Follow package of practices; join FPO/SHG collection",
-      "Participate in procurement at MSP/local centers",
-    ],
-    contacts: {
-      phone: "State Millet Mission cell",
-      email: "",
-      office: "Block Agriculture Office",
-    },
-    faq: ["MSP-based procurement for select millets in participating blocks."],
-    lastUpdated: "11d ago",
     status: "Open",
   },
 ];
@@ -389,6 +334,7 @@ const GovernmentSchemes = () => {
     incomeType: "",
   });
   const [compare, setCompare] = useState([]);
+  const [showDeadlines, setShowDeadlines] = useState(false);
 
   const filtered = useMemo(() => {
     const q = search.trim().toLowerCase();
@@ -461,6 +407,28 @@ const GovernmentSchemes = () => {
 
   const compareItems = schemeData.filter((s) => compare.includes(s.id));
 
+  // Get schemes with deadlines (not "Ongoing")
+  const upcomingDeadlines = schemeData
+    .filter((s) => s.deadline !== "Ongoing")
+    .map((s) => {
+      // Parse deadline to calculate days left
+      const deadlineDate = new Date(s.deadline);
+      const today = new Date();
+      const daysLeft = Math.ceil(
+        (deadlineDate - today) / (1000 * 60 * 60 * 24)
+      );
+
+      return {
+        ...s,
+        daysLeft: daysLeft > 0 ? daysLeft : 0,
+        urgency:
+          daysLeft <= 7 ? "urgent" : daysLeft <= 30 ? "moderate" : "normal",
+      };
+    })
+    .filter((s) => s.daysLeft > 0)
+    .sort((a, b) => a.daysLeft - b.daysLeft)
+    .slice(0, 5);
+
   return (
     <div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -479,11 +447,98 @@ const GovernmentSchemes = () => {
             </p>
           </div>
           <div className="flex items-center gap-2">
-            <div className="px-3 py-2 glass-card rounded-button text-sm text-white">
-              {t("Alerts for new schemes, closing dates, and status updates.")}
-            </div>
+            <button
+              onClick={() => setShowDeadlines(!showDeadlines)}
+              className="px-4 py-2 glass-card rounded-button text-sm text-white hover:bg-gradient-primary transition-all duration-250 hover:scale-103"
+            >
+              {showDeadlines
+                ? t("Hide Deadlines")
+                : t("🔔 View Deadline Alerts")}
+            </button>
           </div>
         </div>
+
+        {/* Deadline Reminders Section */}
+        {showDeadlines && upcomingDeadlines.length > 0 && (
+          <div className="glass-card rounded-card p-6 mb-6 animate-fadeIn border-2 border-yellow-500">
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-xl font-bold text-white flex items-center gap-2">
+                ⚠️ {t("Upcoming Deadlines")}
+              </h2>
+              <span className="text-sm text-yellow-400">
+                {upcomingDeadlines.length} {t("schemes closing soon")}
+              </span>
+            </div>
+            <div className="space-y-3">
+              {upcomingDeadlines.map((scheme) => (
+                <div
+                  key={scheme.id}
+                  className={`p-4 rounded-card ${
+                    scheme.urgency === "urgent"
+                      ? "bg-red-500 bg-opacity-20 border border-red-500"
+                      : scheme.urgency === "moderate"
+                      ? "bg-yellow-500 bg-opacity-20 border border-yellow-500"
+                      : "bg-blue-500 bg-opacity-20 border border-blue-500"
+                  }`}
+                >
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex-1">
+                      <h3 className="text-lg font-semibold text-white mb-1">
+                        {scheme.name}
+                      </h3>
+                      <p className="text-sm text-gray-300 mb-2">
+                        {t("Category:")} {scheme.category} • {scheme.type}
+                      </p>
+                      <p className="text-sm text-gray-300">
+                        {t("Benefit:")} {scheme.benefitAmount}
+                      </p>
+                    </div>
+                    <div className="text-right">
+                      <div
+                        className={`text-2xl font-bold ${
+                          scheme.urgency === "urgent"
+                            ? "text-red-400"
+                            : scheme.urgency === "moderate"
+                            ? "text-yellow-400"
+                            : "text-blue-400"
+                        }`}
+                      >
+                        {scheme.daysLeft}
+                      </div>
+                      <div className="text-xs text-gray-300">
+                        {t("days left")}
+                      </div>
+                      <div className="text-xs text-gray-400 mt-1">
+                        {t("Deadline:")} {scheme.deadline}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="mt-3 flex gap-2">
+                    {scheme.applicationLink && (
+                      <a
+                        href={scheme.applicationLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-4 py-2 bg-gradient-primary text-white rounded-button hover:shadow-glow-purple transition-all duration-250 hover:scale-105 text-sm font-semibold"
+                      >
+                        {t("Apply Now")} →
+                      </a>
+                    )}
+                    <button
+                      onClick={() => {
+                        setShowDeadlines(false);
+                        setSearch(scheme.name);
+                      }}
+                      className="px-4 py-2 glass-card text-white rounded-button hover:bg-white hover:bg-opacity-10 transition-all duration-250 text-sm"
+                    >
+                      {t("View Details")}
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         <div className="grid lg:grid-cols-[320px,1fr] gap-6 items-start">
           {/* Filters */}
@@ -577,21 +632,21 @@ const GovernmentSchemes = () => {
                 {filtered.map((s) => (
                   <article
                     key={s.id}
-                    className="glass-card rounded-card p-4 hover:bg-gradient-primary hover:shadow-glow-purple transition-all duration-250 group hover:scale-[1.02]"
+                    className="glass-card rounded-card p-4 hover:bg-white hover:bg-opacity-5 hover:shadow-lg hover:border-purple-500 hover:border-opacity-50 transition-all duration-250 group hover:scale-[1.01] border border-transparent"
                   >
                     <div className="flex items-start justify-between gap-2">
                       <div>
-                        <p className="text-xs uppercase text-purple-400 group-hover:!text-white font-semibold transition-colors">
+                        <p className="text-xs uppercase text-purple-400 font-semibold transition-colors">
                           {s.category} • {s.type}
                         </p>
                         <h3 className="text-lg font-semibold text-white leading-snug">
                           {s.name}
                         </h3>
-                        <p className="text-sm text-gray-400 group-hover:!text-white transition-colors">
+                        <p className="text-sm text-gray-400 transition-colors">
                           {t("Region:")} {t(s.state)}
                         </p>
                       </div>
-                      <label className="text-xs text-gray-400 group-hover:!text-white flex items-center gap-1 transition-colors">
+                      <label className="text-xs text-gray-400 flex items-center gap-1 transition-colors">
                         <input
                           type="checkbox"
                           checked={compare.includes(s.id)}
@@ -602,23 +657,23 @@ const GovernmentSchemes = () => {
                       </label>
                     </div>
 
-                    <p className="text-sm text-gray-300 group-hover:!text-white mt-2 mb-3 transition-colors">
+                    <p className="text-sm text-gray-300 mt-2 mb-3 transition-colors">
                       {s.tags?.slice(0, 3).join(" • ")}
                     </p>
 
                     <div className="flex flex-wrap gap-2 text-xs mb-3">
-                      <span className="px-2 py-1 bg-green-500 bg-opacity-20 text-green-400 rounded-button group-hover:!bg-white group-hover:!bg-opacity-20 group-hover:!text-white transition-colors">
+                      <span className="px-2 py-1 bg-green-500 bg-opacity-20 text-green-400 rounded-button transition-colors">
                         {t("Benefit:")} {s.benefitAmount}
                       </span>
-                      <span className="px-2 py-1 bg-blue-500 bg-opacity-20 text-blue-400 rounded-button group-hover:!bg-white group-hover:!bg-opacity-20 group-hover:!text-white transition-colors">
+                      <span className="px-2 py-1 bg-blue-500 bg-opacity-20 text-blue-400 rounded-button transition-colors">
                         {t("Last date:")} {t(s.deadline)}
                       </span>
-                      <span className="px-2 py-1 bg-orange-500 bg-opacity-20 text-orange-400 rounded-button group-hover:!bg-white group-hover:!bg-opacity-20 group-hover:!text-white transition-colors">
+                      <span className="px-2 py-1 bg-orange-500 bg-opacity-20 text-orange-400 rounded-button transition-colors">
                         {t("Status:")} {t(s.status)}
                       </span>
                     </div>
 
-                    <div className="text-sm text-gray-300 group-hover:!text-white space-y-1 mb-3 transition-colors">
+                    <div className="text-sm text-gray-300 space-y-1 mb-3 transition-colors">
                       <p>
                         <span className="font-semibold text-white">
                           {t("Eligibility:")}
@@ -633,7 +688,7 @@ const GovernmentSchemes = () => {
                       </p>
                     </div>
 
-                    <div className="text-xs text-gray-300 group-hover:!text-white space-y-1 mb-3 transition-colors">
+                    <div className="text-xs text-gray-300 space-y-1 mb-3 transition-colors">
                       <p className="font-semibold text-white">{t("Steps:")}</p>
                       <ul className="list-disc list-inside space-y-0.5">
                         {s.steps.map((st, i) => (
@@ -643,15 +698,30 @@ const GovernmentSchemes = () => {
                     </div>
 
                     <div className="flex items-center gap-2 text-xs mb-3 flex-wrap">
-                      <span className="px-2 py-1 bg-gray-700 text-gray-300 rounded-button group-hover:!bg-white group-hover:!bg-opacity-20 group-hover:!text-white transition-colors">
+                      <span className="px-2 py-1 bg-gray-700 text-gray-300 rounded-button transition-colors">
                         {t("Contacts:")} {s.contacts.phone}
                       </span>
                       {s.contacts.office && (
-                        <span className="px-2 py-1 bg-gray-700 text-gray-300 rounded-button group-hover:!bg-white group-hover:!bg-opacity-20 group-hover:!text-white transition-colors">
+                        <span className="px-2 py-1 bg-gray-700 text-gray-300 rounded-button transition-colors">
                           {t("Office:")} {s.contacts.office}
                         </span>
                       )}
                     </div>
+
+                    {/* Apply Now Button */}
+                    {s.applicationLink && (
+                      <div className="mt-3 pt-3 border-t border-gray-700">
+                        <a
+                          href={s.applicationLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block w-full text-center px-4 py-2 bg-gradient-primary text-white rounded-button hover:shadow-glow-purple transition-all duration-250 hover:scale-105 font-semibold"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          {t("Apply Now")} →
+                        </a>
+                      </div>
+                    )}
                   </article>
                 ))}
               </div>
