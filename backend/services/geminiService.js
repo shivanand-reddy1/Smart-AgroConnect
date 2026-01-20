@@ -1,9 +1,11 @@
-const { GoogleGenerativeAI } = require("@google/generative-ai");
+const Groq = require("groq-sdk");
 
-// Initialize Gemini
-console.log("🔑 GEMINI_API_KEY present:", !!process.env.GEMINI_API_KEY);
-console.log("🔑 GEMINI_API_KEY length:", process.env.GEMINI_API_KEY?.length);
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+// Initialize Groq
+console.log("🔑 GROQ_API_KEY present:", !!process.env.GROQ_API_KEY);
+console.log("🔑 GROQ_API_KEY length:", process.env.GROQ_API_KEY?.length);
+const groq = new Groq({
+  apiKey: process.env.GROQ_API_KEY,
+});
 
 // Farming-specific system instruction
 const FARMING_SYSTEM_INSTRUCTION = `You are an expert farming advisor specializing in Indian agriculture. 
@@ -22,45 +24,30 @@ Include practical tips and local practices when relevant.
 Keep responses concise and actionable.
 If asked about specific locations, provide location-relevant advice.`;
 
-let chatSession = null;
+// Chat history to maintain conversation context
+let chatHistory = [
+  {
+    role: "system",
+    content: FARMING_SYSTEM_INSTRUCTION,
+  },
+  {
+    role: "user",
+    content: "Hello! I am a farmer looking for agricultural advice.",
+  },
+  {
+    role: "assistant",
+    content:
+      "Hello! I'm your farming advisor. I'm here to help you with any questions about crop cultivation, pest management, soil health, irrigation, or farming techniques. Ask me anything about your farming needs, and I'll provide practical advice tailored to Indian farming conditions.",
+  },
+];
 
 // Initialize chat session
 async function initializeChat() {
   try {
-    const model = genAI.getGenerativeModel({
-      model: "gemini-2.0-flash",
-      systemInstruction: FARMING_SYSTEM_INSTRUCTION,
-    });
-
-    chatSession = model.startChat({
-      history: [
-        {
-          role: "user",
-          parts: [
-            {
-              text: "Hello! I am a farmer looking for agricultural advice.",
-            },
-          ],
-        },
-        {
-          role: "model",
-          parts: [
-            {
-              text: "Hello! I'm your farming advisor. I'm here to help you with any questions about crop cultivation, pest management, soil health, irrigation, or farming techniques. Ask me anything about your farming needs, and I'll provide practical advice tailored to Indian farming conditions.",
-            },
-          ],
-        },
-      ],
-      generationConfig: {
-        maxOutputTokens: 500,
-        temperature: 0.7,
-      },
-    });
-
-    console.log("✅ Gemini chat session initialized");
-    return chatSession;
+    console.log("✅ Groq chat session initialized");
+    return true;
   } catch (error) {
-    console.error("❌ Error initializing Gemini chat:", error.message);
+    console.error("❌ Error initializing Groq chat:", error.message);
     throw error;
   }
 }
@@ -122,19 +109,41 @@ function getFallbackAdvice(message) {
   return fallbackResponses.default;
 }
 
-// Send message to Gemini
+// Send message to Groq
 async function sendMessage(userMessage) {
   try {
-    // Initialize chat if not already done
-    if (!chatSession) {
-      await initializeChat();
+    // Add user message to history
+    chatHistory.push({
+      role: "user",
+      content: userMessage,
+    });
+
+    const chatCompletion = await groq.chat.completions.create({
+      messages: chatHistory,
+      model: "llama-3.1-8b-instant",
+      temperature: 0.7,
+      max_tokens: 500,
+    });
+
+    const assistantMessage = chatCompletion.choices[0].message.content;
+
+    // Add assistant response to history
+    chatHistory.push({
+      role: "assistant",
+      content: assistantMessage,
+    });
+
+    // Keep chat history manageable (last 10 messages + system message)
+    if (chatHistory.length > 21) {
+      chatHistory = [
+        chatHistory[0], // Keep system message
+        ...chatHistory.slice(-20), // Keep last 20 messages
+      ];
     }
 
-    const result = await chatSession.sendMessage(userMessage);
-    const response = await result.response;
-    return response.text();
+    return assistantMessage;
   } catch (error) {
-    console.error("⚠️ Gemini API error, using fallback:", error.message);
+    console.error("⚠️ Groq API error, using fallback:", error.message);
     // Return fallback response if API fails
     return getFallbackAdvice(userMessage);
   }
@@ -144,26 +153,36 @@ async function sendMessage(userMessage) {
 async function getFarmingAdvice(
   query,
   cropName = "general",
-  location = "India"
+  location = "India",
 ) {
   try {
-    if (!chatSession) {
-      await initializeChat();
-    }
-
     const enhancedQuery = `
 Provide farming advice for ${cropName} farming in ${location}.
 Question: ${query}
 
 Please provide practical, actionable advice suitable for Indian farmers.`;
 
-    const result = await chatSession.sendMessage(enhancedQuery);
-    const response = await result.response;
-    return response.text();
+    const chatCompletion = await groq.chat.completions.create({
+      messages: [
+        {
+          role: "system",
+          content: FARMING_SYSTEM_INSTRUCTION,
+        },
+        {
+          role: "user",
+          content: enhancedQuery,
+        },
+      ],
+      model: "llama-3.1-8b-instant",
+      temperature: 0.7,
+      max_tokens: 500,
+    });
+
+    return chatCompletion.choices[0].message.content;
   } catch (error) {
     console.error(
-      "⚠️ Gemini API error for farming advice, using fallback:",
-      error.message
+      "⚠️ Groq API error for farming advice, using fallback:",
+      error.message,
     );
     return getFallbackAdvice(`${cropName} ${query}`);
   }
@@ -172,20 +191,30 @@ Please provide practical, actionable advice suitable for Indian farmers.`;
 // Get pest management advice
 async function getPestAdvice(pestName, cropName, location = "India") {
   try {
-    if (!chatSession) {
-      await initializeChat();
-    }
-
     const query = `What are the best ways to manage ${pestName} in ${cropName} farming in ${location}? 
 Provide prevention methods, organic solutions, and when to use chemical treatments.`;
 
-    const result = await chatSession.sendMessage(query);
-    const response = await result.response;
-    return response.text();
+    const chatCompletion = await groq.chat.completions.create({
+      messages: [
+        {
+          role: "system",
+          content: FARMING_SYSTEM_INSTRUCTION,
+        },
+        {
+          role: "user",
+          content: query,
+        },
+      ],
+      model: "llama-3.1-8b-instant",
+      temperature: 0.7,
+      max_tokens: 500,
+    });
+
+    return chatCompletion.choices[0].message.content;
   } catch (error) {
     console.error(
-      "⚠️ Gemini API error for pest advice, using fallback:",
-      error.message
+      "⚠️ Groq API error for pest advice, using fallback:",
+      error.message,
     );
     return `For ${pestName} management in ${cropName}: Use neem oil spray (2ml/liter), beneficial insects like ladybugs, pheromone traps, and manual picking. For severe infestations, consult local agricultural extension officers. Practice crop rotation and maintain field hygiene.`;
   }
@@ -194,15 +223,25 @@ Provide prevention methods, organic solutions, and when to use chemical treatmen
 // Get soil management advice
 async function getSoilAdvice(soilType, cropName, location = "India") {
   try {
-    if (!chatSession) {
-      await initializeChat();
-    }
-
     const query = `Give me soil management and fertilizer recommendations for ${cropName} farming on ${soilType} soil in ${location}.`;
 
-    const result = await chatSession.sendMessage(query);
-    const response = await result.response;
-    return response.text();
+    const chatCompletion = await groq.chat.completions.create({
+      messages: [
+        {
+          role: "system",
+          content: FARMING_SYSTEM_INSTRUCTION,
+        },
+        {
+          role: "user",
+          content: query,
+        },
+      ],
+      model: "llama-3.1-8b-instant",
+      temperature: 0.7,
+      max_tokens: 500,
+    });
+
+    return chatCompletion.choices[0].message.content;
   } catch (error) {
     console.error("❌ Error getting soil advice:", error.message);
     throw new Error(`Failed to get soil advice: ${error.message}`);
@@ -211,7 +250,21 @@ async function getSoilAdvice(soilType, cropName, location = "India") {
 
 // Reset chat session
 function resetChat() {
-  chatSession = null;
+  chatHistory = [
+    {
+      role: "system",
+      content: FARMING_SYSTEM_INSTRUCTION,
+    },
+    {
+      role: "user",
+      content: "Hello! I am a farmer looking for agricultural advice.",
+    },
+    {
+      role: "assistant",
+      content:
+        "Hello! I'm your farming advisor. I'm here to help you with any questions about crop cultivation, pest management, soil health, irrigation, or farming techniques. Ask me anything about your farming needs, and I'll provide practical advice tailored to Indian farming conditions.",
+    },
+  ];
   console.log("🔄 Chat session reset");
 }
 

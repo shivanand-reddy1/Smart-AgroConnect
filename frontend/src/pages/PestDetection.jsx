@@ -48,7 +48,7 @@ const PestDetection = () => {
           headers: {
             "Content-Type": "multipart/form-data",
           },
-        }
+        },
       );
 
       setResult(response.data);
@@ -73,9 +73,7 @@ const PestDetection = () => {
         <div className="grid md:grid-cols-2 gap-8">
           {/* ================= LEFT PANEL ================= */}
           <div className="glass-card p-6 rounded-card">
-            <h3 className="text-lg font-semibold mb-4">
-              {t("Upload Mushroom Image")}
-            </h3>
+            <h3 className="text-lg font-semibold mb-4">{t("Upload Image")}</h3>
 
             <div className="space-y-4">
               <div className="border-2 border-dashed rounded-card p-6 text-center cursor-pointer">
@@ -107,9 +105,11 @@ const PestDetection = () => {
               <button
                 onClick={detectDisease}
                 disabled={loading}
-                className="w-full py-2 rounded-button font-semibold"
+                className="w-full py-2 rounded-button font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {loading ? t("Analyzing...") : t("Detect Disease")}
+                <span className="inline-block transition-all duration-300 hover:scale-110 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-[#ab47ff] hover:to-[#3f8cff] active:scale-95">
+                  {loading ? t("Analyzing...") : t("Detect Disease")}
+                </span>
               </button>
             </div>
           </div>

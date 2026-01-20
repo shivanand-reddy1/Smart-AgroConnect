@@ -1,13 +1,13 @@
 const {
   sendMessage,
   getFarmingAdvice,
-  getPestAdvice: geminiPestAdvice,
+  getPestAdvice: groqPestAdvice,
   initializeChat,
 } = require("../services/geminiService");
 
-// Initialize Gemini on startup
+// Initialize Groq on startup
 initializeChat().catch((err) => {
-  console.error("Failed to initialize Gemini:", err);
+  console.error("Failed to initialize Groq:", err);
 });
 
 // Chat endpoint - for streaming conversation
@@ -75,7 +75,7 @@ const getPestAdvice = async (req, res) => {
         .json({ error: "Pest name and crop name are required" });
     }
 
-    const advice = await geminiPestAdvice(pestName, cropName, location);
+    const advice = await groqPestAdvice(pestName, cropName, location);
 
     res.json({
       success: true,

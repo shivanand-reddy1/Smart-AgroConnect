@@ -760,7 +760,7 @@ const getTranslations = (req, res) => {
   }
 };
 
-// Translate text using Gemini API
+// Translate text using Groq API
 const translateText = async (req, res) => {
   try {
     const { text, targetLanguage, sourceLanguage } = req.body;
@@ -779,10 +779,11 @@ const translateText = async (req, res) => {
       });
     }
 
-    // Use Gemini API for dynamic translation
-    const { GoogleGenerativeAI } = require("@google/generative-ai");
-    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+    // Use Groq API for dynamic translation
+    const Groq = require("groq-sdk");
+    const groq = new Groq({
+      apiKey: process.env.GROQ_API_KEY,
+    });
 
     let prompt;
     if (targetLanguage === "kannada") {
@@ -795,8 +796,24 @@ const translateText = async (req, res) => {
       });
     }
 
-    const result = await model.generateContent(prompt);
-    const translatedText = result.response.text().trim();
+    const chatCompletion = await groq.chat.completions.create({
+      messages: [
+        {
+          role: "system",
+          content:
+            "You are a professional translator. Provide only the translation without any additional text or explanations.",
+        },
+        {
+          role: "user",
+          content: prompt,
+        },
+      ],
+      model: "llama-3.1-8b-instant",
+      temperature: 0.3,
+      max_tokens: 500,
+    });
+
+    const translatedText = chatCompletion.choices[0].message.content.trim();
 
     res.json({
       original: text,
