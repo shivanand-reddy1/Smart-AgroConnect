@@ -96,7 +96,7 @@ const getComparativePrices = async (req, res) => {
       bestPrice: Math.max(...comparativeData.map((d) => d.avgPrice)),
       bestState: comparativeData.find(
         (d) =>
-          d.avgPrice === Math.max(...comparativeData.map((d) => d.avgPrice))
+          d.avgPrice === Math.max(...comparativeData.map((d) => d.avgPrice)),
       ).state,
     });
   } catch (error) {

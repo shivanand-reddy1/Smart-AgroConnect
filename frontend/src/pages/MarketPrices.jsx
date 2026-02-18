@@ -18,101 +18,72 @@ const MarketPrices = () => {
   const [cropName, setCropName] = useState("Rice");
   const [city, setCity] = useState("Bangalore");
   const [loading, setLoading] = useState(false);
-  const [lastUpdated, setLastUpdated] = useState(null);
 
-  const getMarketPrices = async () => {
+  // Combined fetch function to handle all data fetching with single error handling
+  const fetchAllMarketData = async (showToast = true) => {
     setLoading(true);
+    let successCount = 0;
+
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.get("/api/market-prices", {
-        params: { crop: cropName, city },
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      setPrices(response.data);
-      setLastUpdated(new Date());
-      toast.success(t("Market prices loaded"));
+
+      // Fetch all data in parallel
+      const [pricesRes, trendsRes, bestCropRes] = await Promise.allSettled([
+        axios.get("/api/market-prices", {
+          params: { crop: cropName, city },
+          headers: { Authorization: `Bearer ${token}` },
+        }),
+        axios.get("/api/market-prices/trends", {
+          params: { crop: cropName, days: 30 },
+          headers: { Authorization: `Bearer ${token}` },
+        }),
+        axios.get("/api/market-prices/best-crop", {
+          params: { city, crop: cropName },
+          headers: { Authorization: `Bearer ${token}` },
+        }),
+      ]);
+
+      // Process prices
+      if (pricesRes.status === "fulfilled") {
+        setPrices(pricesRes.value.data);
+        successCount++;
+      }
+
+      // Process trends
+      if (trendsRes.status === "fulfilled") {
+        setTrends(trendsRes.value.data.trends || []);
+        successCount++;
+      }
+
+      // Process best crop
+      if (bestCropRes.status === "fulfilled") {
+        setBestCrop(bestCropRes.value.data);
+        successCount++;
+      }
+
+      // Show single toast based on results
+      if (showToast) {
+        if (successCount === 3) {
+          toast.success(t("Market prices loaded"));
+        } else if (successCount > 0) {
+          toast.success(t("Partial data loaded"));
+        } else {
+          toast.error(t("Error fetching market data"));
+        }
+      }
     } catch (error) {
-      toast.error(t("Error fetching prices"));
+      if (showToast) {
+        toast.error(t("Error fetching market data"));
+      }
     } finally {
       setLoading(false);
     }
   };
 
-  const getPriceTrends = async () => {
-    try {
-      const token = localStorage.getItem("token");
-      const response = await axios.get("/api/market-prices/trends", {
-        params: { crop: cropName, days: 30 },
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      setTrends(response.data.trends);
-    } catch (error) {
-      toast.error(t("Error fetching trends"));
-    }
-  };
-
-  const getBestCropToSell = async () => {
-    try {
-      const token = localStorage.getItem("token");
-      // Pass the selected crop to show best price for that specific crop
-      const response = await axios.get("/api/market-prices/best-crop", {
-        params: { city, crop: cropName },
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      setBestCrop(response.data);
-    } catch (error) {
-      toast.error(t("Error fetching best crop"));
-    }
-  };
-
   useEffect(() => {
-    getMarketPrices();
-    getPriceTrends();
-    getBestCropToSell();
+    fetchAllMarketData(false); // Don't show toast on initial load
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  // Helper function to calculate trend based on moving averages
-  const calculateTrendStatus = (
-    currentPrice,
-    yesterdayPrice,
-    avg7Day,
-    avg30Day
-  ) => {
-    if (!yesterdayPrice) {
-      return {
-        status: "NOT_ENOUGH_DATA",
-        display: "Not enough data",
-        icon: null,
-      };
-    }
-
-    // Compare today vs yesterday
-    const vs_yesterday = currentPrice - yesterdayPrice;
-    const percent_change = ((vs_yesterday / yesterdayPrice) * 100).toFixed(2);
-
-    if (vs_yesterday > 0) {
-      return {
-        status: "UP",
-        display: `UP ${percent_change}%`,
-        icon: "up",
-        comparison: `Today vs Yesterday: ₹${yesterdayPrice} → ₹${currentPrice}`,
-      };
-    } else if (vs_yesterday < 0) {
-      return {
-        status: "DOWN",
-        display: `DOWN ${percent_change}%`,
-        icon: "down",
-        comparison: `Today vs Yesterday: ₹${yesterdayPrice} → ₹${currentPrice}`,
-      };
-    } else {
-      return {
-        status: "STABLE",
-        display: "STABLE",
-        icon: null,
-        comparison: `Today vs Yesterday: Both at ₹${currentPrice}`,
-      };
-    }
-  };
 
   // Helper function to format date/time
   const formatDateTime = (date) => {
@@ -147,11 +118,7 @@ const MarketPrices = () => {
           className="flex-1 min-w-48 px-4 py-2 glass-input rounded-button focus:ring-2 focus:ring-purple-500 outline-none transition-all duration-250"
         />
         <button
-          onClick={() => {
-            getMarketPrices();
-            getPriceTrends();
-            getBestCropToSell();
-          }}
+          onClick={() => fetchAllMarketData(true)}
           disabled={loading}
           className="bg-gradient-primary text-white px-6 py-2 rounded-button hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed shadow-glow-purple transition-all duration-250 font-medium"
         >
@@ -205,8 +172,8 @@ const MarketPrices = () => {
                 bestCrop.profitChange > 0
                   ? "border-2 border-green-500"
                   : bestCrop.profitChange < 0
-                  ? "border-2 border-red-500"
-                  : "border-2 border-yellow-500"
+                    ? "border-2 border-red-500"
+                    : "border-2 border-yellow-500"
               }`}
             >
               <p className="text-sm text-gray-400 group-hover:!text-white transition-colors">
@@ -217,8 +184,8 @@ const MarketPrices = () => {
                   bestCrop.profitChange > 0
                     ? "text-green-400"
                     : bestCrop.profitChange < 0
-                    ? "text-red-400"
-                    : "text-yellow-400"
+                      ? "text-red-400"
+                      : "text-yellow-400"
                 }`}
               >
                 {bestCrop.profitChange > 0 ? (
@@ -306,8 +273,8 @@ const MarketPrices = () => {
                 prices.trend === "up"
                   ? "border-l-4 border-green-500"
                   : prices.trend === "down"
-                  ? "border-l-4 border-red-500"
-                  : "border-l-4 border-yellow-500"
+                    ? "border-l-4 border-red-500"
+                    : "border-l-4 border-yellow-500"
               }`}
             >
               <p className="text-sm text-gray-400 group-hover:!text-white transition-colors">
@@ -318,8 +285,8 @@ const MarketPrices = () => {
                   prices.trend === "up"
                     ? "text-green-400"
                     : prices.trend === "down"
-                    ? "text-red-400"
-                    : "text-yellow-400"
+                      ? "text-red-400"
+                      : "text-yellow-400"
                 }`}
               >
                 {prices.trend === "up" ? (
@@ -362,16 +329,16 @@ const MarketPrices = () => {
             const displayedTrends = trends.slice(0, 10);
             const startDate = new Date(displayedTrends[0].date);
             const endDate = new Date(
-              displayedTrends[displayedTrends.length - 1].date
+              displayedTrends[displayedTrends.length - 1].date,
             );
             const daysDifference = Math.ceil(
-              (endDate - startDate) / (1000 * 60 * 60 * 24)
+              (endDate - startDate) / (1000 * 60 * 60 * 24),
             );
             const minPrice = Math.min(
-              ...displayedTrends.map((t) => t.avgPrice)
+              ...displayedTrends.map((t) => t.avgPrice),
             );
             const maxPrice = Math.max(
-              ...displayedTrends.map((t) => t.avgPrice)
+              ...displayedTrends.map((t) => t.avgPrice),
             );
             const firstPrice = displayedTrends[0].avgPrice;
             const lastPrice =
@@ -510,17 +477,17 @@ const MarketPrices = () => {
                   <p className="text-sm text-gray-300 mt-1">
                     {overallChange > 0
                       ? `✅ ${t(
-                          "Prices trending UP by"
+                          "Prices trending UP by",
                         )} ${overallChange}% - ${t(
-                          "Good time to sell if you need immediate cash"
+                          "Good time to sell if you need immediate cash",
                         )}`
                       : overallChange < -2
-                      ? `⚠️ ${t("Prices declining by")} ${Math.abs(
-                          overallChange
-                        )}% - ${t("Consider waiting for better prices")}`
-                      : `➡️ ${t("Prices stable")} - ${t(
-                          "Market is steady, sell when you're ready"
-                        )}`}
+                        ? `⚠️ ${t("Prices declining by")} ${Math.abs(
+                            overallChange,
+                          )}% - ${t("Consider waiting for better prices")}`
+                        : `➡️ ${t("Prices stable")} - ${t(
+                            "Market is steady, sell when you're ready",
+                          )}`}
                   </p>
                 </div>
               </>

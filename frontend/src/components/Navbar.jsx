@@ -81,7 +81,7 @@ const Navbar = () => {
             className="text-xl sm:text-2xl font-bold flex items-center gap-3 hover:scale-105 transition-all duration-250 icon-glow"
           >
             <FaLeaf className="text-2xl sm:text-3xl text-gradient" />
-            <span className="text-gradient">{t("Smart AgroConnect")}</span>
+            <span className="text-gradient">{t("AI Smart AgroConnect")}</span>
           </Link>
 
           {/* Desktop Navigation */}

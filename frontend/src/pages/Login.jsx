@@ -92,7 +92,7 @@ const Login = () => {
             </div>
           </div>
           <h2 className="text-4xl font-extrabold text-gradient mb-2">
-            Smart AgroConnect
+            AI Smart AgroConnect
           </h2>
           <p className="text-text-secondary text-lg">Welcome back, Farmer!</p>
         </div>

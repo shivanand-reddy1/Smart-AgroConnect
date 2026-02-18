@@ -313,7 +313,7 @@ const Marketplace = () => {
             </h1>
             <p className="text-gray-300 mt-1 max-w-2xl">
               {t(
-                "Compare certified inputs, contact verified sellers, and order with delivery clarity—without leaving Smart AgroConnect."
+                "Compare certified inputs, contact verified sellers, and order with delivery clarity—without leaving AI Smart AgroConnect.",
               )}
             </p>
           </div>
@@ -642,7 +642,7 @@ const Marketplace = () => {
                   <li>
                     4){" "}
                     {t(
-                      "Place order with quantity, delivery, and payment preferences."
+                      "Place order with quantity, delivery, and payment preferences.",
                     )}
                   </li>
                   <li>5) {t("Track order status and receive updates.")}</li>
@@ -663,7 +663,7 @@ const Marketplace = () => {
                   <li>
                     5){" "}
                     {t(
-                      "View analytics: views, conversions, regions, cancellations."
+                      "View analytics: views, conversions, regions, cancellations.",
                     )}
                   </li>
                 </ol>
@@ -681,7 +681,7 @@ const Marketplace = () => {
                   </p>
                   <p className="text-gray-300">
                     {t(
-                      "Document checks, badges on cards, visible last-updated date."
+                      "Document checks, badges on cards, visible last-updated date.",
                     )}
                   </p>
                 </div>
@@ -691,7 +691,7 @@ const Marketplace = () => {
                   </p>
                   <p className="text-gray-300">
                     {t(
-                      "Quality grade, certifications, ratings with photos, dispute link."
+                      "Quality grade, certifications, ratings with photos, dispute link.",
                     )}
                   </p>
                 </div>
@@ -701,7 +701,7 @@ const Marketplace = () => {
                   </p>
                   <p className="text-gray-300">
                     {t(
-                      "Delivery type, ETA, returns/warranty (if applicable), total cost preview."
+                      "Delivery type, ETA, returns/warranty (if applicable), total cost preview.",
                     )}
                   </p>
                 </div>

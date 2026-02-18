@@ -73,7 +73,7 @@ const Dashboard = () => {
         {/* Welcome Section - Hero Style */}
         <div className="pt-10 pb-6 px-4 sm:px-6 lg:px-8 text-center animate-slideUp">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-3 tracking-tight leading-tight text-gradient">
-            {t("Welcome to Smart AgroConnect")}
+            {t("Welcome to AI Smart AgroConnect")}
           </h1>
           <p className="text-base sm:text-lg text-text-secondary max-w-2xl mx-auto leading-relaxed">
             {t("Your complete agricultural advisory and marketplace platform")}
@@ -95,7 +95,7 @@ const Dashboard = () => {
           </h2>
           <p className="text-base sm:text-lg text-text-secondary max-w-2xl mx-auto leading-relaxed">
             {t(
-              "These below are the primary services offered by Smart AgroConnect"
+              "These below are the primary services offered by AI Smart AgroConnect",
             )}
           </p>
         </div>

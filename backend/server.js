@@ -35,16 +35,13 @@ app.set("trust proxy", 1);
 // ==========================
 // CORS CONFIG
 // ==========================
-const allowedOrigins = [
-  "http://localhost:3000",
-  "http://127.0.0.1:3000",
-];
+const allowedOrigins = ["http://localhost:3000", "http://127.0.0.1:3000"];
 
 app.use(
   cors({
     origin: allowedOrigins,
     credentials: true,
-  })
+  }),
 );
 
 // ==========================
@@ -71,7 +68,9 @@ app.use("/api/auth", authLimiter);
 const mongoUri = process.env.MONGODB_URI;
 
 if (!mongoUri) {
-  console.error("❌ MONGODB_URI not set. Check backend/.env or your environment variables");
+  console.error(
+    "❌ MONGODB_URI not set. Check backend/.env or your environment variables",
+  );
 } else {
   const mongooseOptions = {
     useNewUrlParser: true,
@@ -79,7 +78,9 @@ if (!mongoUri) {
   };
 
   const connectWithRetry = (attempt = 1) => {
-    console.log(`🔌 Attempting MongoDB connection (attempt ${attempt}) to ${mongoUri}`);
+    console.log(
+      `🔌 Attempting MongoDB connection (attempt ${attempt}) to ${mongoUri}`,
+    );
     mongoose
       .connect(mongoUri, mongooseOptions)
       .then(() => {
@@ -88,10 +89,12 @@ if (!mongoUri) {
       .catch((err) => {
         console.error("❌ MongoDB connection error:", err);
         if (
-          (err && err.code === 'ECONNREFUSED') ||
-          (err && err.message && err.message.includes('ECONNREFUSED'))
+          (err && err.code === "ECONNREFUSED") ||
+          (err && err.message && err.message.includes("ECONNREFUSED"))
         ) {
-          console.error("Connection refused - is MongoDB (mongod) running on 127.0.0.1:27017?");
+          console.error(
+            "Connection refused - is MongoDB (mongod) running on 127.0.0.1:27017?",
+          );
         }
         const delay = Math.min(30000, 2000 * attempt);
         console.log(`Retrying MongoDB connection in ${delay / 1000}s...`);
@@ -99,27 +102,27 @@ if (!mongoUri) {
       });
   };
 
-  mongoose.connection.on('disconnected', () => {
-    console.warn('⚠️ MongoDB disconnected');
+  mongoose.connection.on("disconnected", () => {
+    console.warn("⚠️ MongoDB disconnected");
   });
 
-  mongoose.connection.on('reconnected', () => {
-    console.log('🔁 MongoDB reconnected');
+  mongoose.connection.on("reconnected", () => {
+    console.log("🔁 MongoDB reconnected");
   });
 
-  mongoose.connection.on('error', (err) => {
-    console.error('MongoDB event error:', err);
+  mongoose.connection.on("error", (err) => {
+    console.error("MongoDB event error:", err);
   });
 
   connectWithRetry();
 
-  process.on('SIGINT', async () => {
+  process.on("SIGINT", async () => {
     try {
       await mongoose.disconnect();
-      console.log('🛑 MongoDB connection closed due to app termination');
+      console.log("🛑 MongoDB connection closed due to app termination");
       process.exit(0);
     } catch (e) {
-      console.error('Error during mongoose disconnect', e);
+      console.error("Error during mongoose disconnect", e);
       process.exit(1);
     }
   });
@@ -152,7 +155,7 @@ app.post("/api/pest-detection/predict", async (req, res) => {
         headers: {
           "Content-Type": "multipart/form-data",
         },
-      }
+      },
     );
 
     res.json(response.data);

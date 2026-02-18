@@ -68,7 +68,7 @@ const Profile = () => {
 
   const formatAddress = (location = {}) => {
     const parts = [location.district, location.city, location.state].filter(
-      Boolean
+      Boolean,
     );
     return parts.join(", ") || "Not provided";
   };
@@ -273,7 +273,7 @@ const Profile = () => {
             {t("My Profile")}
           </h1>
           <p className="text-text-secondary mt-1">
-            {t("View your Smart AgroConnect account information")}
+            {t("View your AI Smart AgroConnect account information")}
           </p>
         </div>
         {renderBody()}

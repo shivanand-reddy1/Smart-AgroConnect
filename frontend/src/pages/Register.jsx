@@ -103,7 +103,7 @@ const Register = () => {
 
       if (response.data.success) {
         toast.success(
-          response.data.message || "Registration successful! Please login."
+          response.data.message || "Registration successful! Please login.",
         );
         navigate("/login");
       }
@@ -133,7 +133,7 @@ const Register = () => {
             </div>
           </div>
           <h2 className="text-4xl font-extrabold text-gradient mb-2">
-            Smart AgroConnect
+            AI Smart AgroConnect
           </h2>
           <p className="text-text-secondary text-lg">
             Join our farming community today
